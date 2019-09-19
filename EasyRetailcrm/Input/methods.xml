@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<methods-list>
+	<method>
+		<method>customersHistory</method>
+		<result>history</result>
+	</method>
+	<method>
+		<method>ordersHistory</method>
+		<result>history</result>
+	</method>
+	<method>
+		<method>customersList</method>
+		<result>customers</result>
+	</method>
+	<method>
+		<method>ordersList</method>
+		<result>orders</result>
+	</method>
+</methods-list>

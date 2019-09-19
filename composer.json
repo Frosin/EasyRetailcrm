@@ -1,0 +1,17 @@
+{
+    "name": "frosin/easyretailcrm",
+    "description": "api lib for retailcrm api client",
+    "type": "library",
+    "license": "free",
+    "minimum-stability": "alpha",
+    "require": {
+        "retailcrm/api-client-php": "~5.0",
+        "monolog/monolog": "^2.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "EasyRetailcrm\\": "",
+            "RetailCrm\\": "*"
+        }
+    }
+}
