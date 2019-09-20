@@ -1,7 +1,9 @@
 <?php
-namespace EasyRetailcrm\Input;
+namespace EasyRetailcrm\Library\EasyRequest;
 
 use EasyRetailcrm\Exception\InvalidApiMethodException;
+use EasyRetailcrm\Library\EasyRequest\Filter\RequestFilter;
+use EasyRetailcrm\Library\EasyRequest\Filter\ResponseFilter;
 
 class EasyRequest
 {

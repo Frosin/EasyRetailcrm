@@ -1,8 +1,8 @@
 <?php
-namespace EasyRetailcrm\Input;
+namespace EasyRetailcrm\Library;
 
 use EasyRetailcrm\Exception\BadRequestException;
-use EasyRetailcrm\Input\EasyRequest;
+use EasyRetailcrm\Library\EasyRequest\EasyRequest;
 
 class Library
 {

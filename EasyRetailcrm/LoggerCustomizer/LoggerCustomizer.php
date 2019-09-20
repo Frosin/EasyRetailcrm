@@ -3,6 +3,9 @@ namespace EasyRetailcrm\LoggerCustomizer;
 
 use Monolog\Logger;
 use Monolog\Handler\RotatingFileHandler;
+use Monolog\Handler\FirePHPHandler;
+use Monolog\Formatter\LineFormatter;
+use Monolog\Formatter\WildfireFormatter;
 use EasyRetailcrm\Exception\InvalidLoggerMethodNameException;
 
 class LoggerCustomizer
@@ -16,6 +19,7 @@ class LoggerCustomizer
         $path = realpath(__DIR__ . "/../../");
         $stream = new RotatingFileHandler("$path/$logDir/$fileName/log-$prefix.log", 30);
         $stream->setFilenameFormat('{filename}-{date}', 'Y-m-d');
+        $stream->setFormatter(new \Monolog\Formatter\JsonFormatter());
         $this->logger->pushHandler($stream);
     }
 
@@ -24,6 +28,7 @@ class LoggerCustomizer
         if (!method_exists($this->logger, $name)) {
             throw new InvalidLoggerMethodNameException('Method `$name` not found in Monolog\Logger!');
         }
-        $this->logger->$name($args[0], $args[1]);
+        $message = array_shift($args);
+        $this->logger->$name($message, $args);
     }
 }

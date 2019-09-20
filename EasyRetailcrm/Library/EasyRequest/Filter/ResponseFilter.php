@@ -1,5 +1,5 @@
 <?php
-namespace EasyRetailcrm\Input;
+namespace EasyRetailcrm\Library\EasyRequest\Filter;
 
 class ResponseFilter extends Filter
 {
