@@ -1,6 +1,8 @@
 <?php
 namespace EasyRetailcrm\Backup;
 
+use Easyretailcrm\Exception\BadDataForUnserializeException;
+
 class Backup
 {
     private $dir;
@@ -18,8 +20,14 @@ class Backup
         file_put_contents($this->dir . "$name-" . date("Y-m-d H:i:s") . ".log", serialize($data));
     }
 
-    public function load(string $name)
+    public function loadLast(string $name)
     {
-        //
+        $files = glob($this->dir . "$name*");
+        $file = end($files);
+        $data = unserialize(file_get_contents($file));
+        if (false === $data) {
+            throw new BadDataForUnserializeException("Bad data for unseralize: " . $file);
+        }
+        return $data;
     }
 }
