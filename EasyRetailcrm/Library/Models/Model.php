@@ -1,7 +1,7 @@
 <?php
 namespace EasyRetailcrm\Library\Models;
 
-use EasyRetailcrm\Exception\BadCustomerPropertyException;
+use EasyRetailcrm\Exception\BadModelPropertyException;
 
 class Model
 {
@@ -22,7 +22,7 @@ class Model
         if (property_exists($obj, $propertyName)) {
             $obj->$propertyName = $propertyValue;
         } else {
-            throw new BadCustomerPropertyException("Bad property `$propertyName` of object `" . static::class);
+            throw new BadModelPropertyException("Bad property `$propertyName` of object `" . static::class);
         }
     }
 

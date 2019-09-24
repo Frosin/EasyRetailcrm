@@ -3,17 +3,21 @@
 	<method>
 		<method>customersHistory</method>
 		<result>history</result>
+		<class>CustomerHistory</class>		
 	</method>
 	<method>
 		<method>ordersHistory</method>
 		<result>history</result>
+		<class>OrderHistory</class>	
 	</method>
 	<method>
 		<method>customersList</method>
 		<result>customers</result>
+		<class>Customer</class>		
 	</method>
 	<method>
 		<method>ordersList</method>
 		<result>orders</result>
+		<class>Order</class>		
 	</method>
 </methods-list>

@@ -4,6 +4,7 @@ namespace EasyRetailcrm\Library;
 use EasyRetailcrm\Exception\BadRequestException;
 use EasyRetailcrm\Library\EasyRequest\EasyRequest;
 use EasyRetailcrm\Library\Models\Customer;
+use EasyRetailcrm\Library\Models\Order;
 
 class Library
 {
@@ -60,7 +61,7 @@ class Library
             $page++;
         } while ($page <= $totalPage);
 
-        return $resultList;
+        return $request->Model::getObjectsByArrayCollection($resultList);
     }
 
     private function checkResult($result)
@@ -72,6 +73,9 @@ class Library
                 $errorMsg .= print_r($result->errors, true);
             }
             throw new BadRequestException($errorMsg);
+        }
+        if (isset($result->id)) {
+            return $result->id;
         }
         return true;
     }
@@ -90,13 +94,17 @@ class Library
         return $this->checkResult($result);
     }
 
-    public function orderEdit($order, $by = 'id')
+    public function orderEdit(Order $order, $by = 'id')
     {
-        $result = $this->apiClient->request->ordersEdit($order->getValue, $by, $order->site);
+        $result = $this->apiClient->request->ordersEdit($order->getValue(), $by, $order->site);
 
         return $this->checkResult($result);
     }
 
+    public function orderCreate(Order $order)
+    {
+        $result = $this->apiClient->request->ordersCreate($order->getValue(), $order->site);
 
-
+        return $this->checkResult($result);
+    }
 }
