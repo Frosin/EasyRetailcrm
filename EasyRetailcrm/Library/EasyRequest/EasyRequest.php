@@ -7,6 +7,8 @@ use EasyRetailcrm\Library\EasyRequest\Filter\RequestFilter;
 use EasyRetailcrm\Library\EasyRequest\Filter\ResponseFilter;
 use EasyRetailcrm\Library\Models\Order;
 use EasyRetailcrm\Library\Models\Customer;
+use EasyRetailcrm\Library\Models\OrdersHistory;
+use easyRetailcrm\Library\Models\CustomersHistory;
 
 class EasyRequest
 {
@@ -48,8 +50,14 @@ class EasyRequest
             case "Order":
                 return Order::class;
                 break;
+            case "OrdersHistory":
+                return OrdersHistory::class;
+                break;
             case "Customer":
                 return Customer::class;
+                break;
+            case "CustomersHistory":
+                return CustomersHistory::class;
                 break;
             default:
                 throw new BadModelNameException("Not found `$name` class in switch by ". __METHOD__);

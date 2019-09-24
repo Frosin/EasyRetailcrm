@@ -3,12 +3,12 @@
 	<method>
 		<method>customersHistory</method>
 		<result>history</result>
-		<class>CustomerHistory</class>		
+		<class>CustomersHistory</class>		
 	</method>
 	<method>
 		<method>ordersHistory</method>
 		<result>history</result>
-		<class>OrderHistory</class>	
+		<class>OrdersHistory</class>	
 	</method>
 	<method>
 		<method>customersList</method>
