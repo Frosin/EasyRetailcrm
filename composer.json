@@ -3,7 +3,7 @@
     "description": "api lib for retailcrm api client",
     "type": "library",
     "license": "MIT",
-    "minimum-stability": "alpha",
+    "minimum-stability": "dev",
     "require": {
         "retailcrm/api-client-php": "~5.0",
         "monolog/monolog": "^2.0"
