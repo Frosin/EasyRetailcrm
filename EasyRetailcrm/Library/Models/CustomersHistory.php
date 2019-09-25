@@ -14,4 +14,5 @@ class CustomersHistory extends Model
     public $customer;
     public $oldValue;
     public $newValue;
+    public $combinedTo;
 }

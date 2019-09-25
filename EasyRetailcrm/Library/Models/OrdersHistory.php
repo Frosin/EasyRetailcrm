@@ -14,4 +14,5 @@ class OrdersHistory extends Model
     public $order;
     public $oldValue;
     public $newValue;
+    public $combinedTo;
 }

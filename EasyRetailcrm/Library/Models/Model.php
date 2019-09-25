@@ -19,10 +19,10 @@ class Model
 
     private static function checkAndSet($obj, $propertyName, $propertyValue)
     {
-        if (property_exists($obj, $propertyName)) {
-            $obj->$propertyName = $propertyValue;
-        } else {
-            throw new BadModelPropertyException("Bad property `$propertyName` of object `" . static::class);
+        $obj->$propertyName = $propertyValue;
+
+        if (!property_exists($obj, $propertyName)) {
+            throw new BadModelPropertyException("Undefined property `$propertyName` of object `" . static::class);
         }
     }
 

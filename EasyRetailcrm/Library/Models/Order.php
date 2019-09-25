@@ -47,6 +47,7 @@ class Order extends Model
     public $uploadedToExternalStoreSystem;
     public $source;
     public $contragent;
+    public $contragentType;
     public $customer;
     public $delivery;
     public $marketplace;
