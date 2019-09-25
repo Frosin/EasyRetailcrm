@@ -41,7 +41,7 @@ class Library
             $resultData = $apiObject->$resultName;
             $resultList = $resultData;
 
-            if (!empty($request->responseFilter->getValue)) {
+            if (!empty($request->responseFilter->getValue())) {
                 $resultList = [];
                 foreach ($resultData as $item) {
                     $itemTemp = [];

@@ -3,7 +3,7 @@ namespace EasyRetailcrm\Library\EasyRequest\Filter;
 
 abstract class Filter
 {
-    private $filterData;
+    protected $filterData = array();
 
     abstract public function remove(string $filterName): void;
 
