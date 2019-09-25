@@ -2,7 +2,7 @@
     "name": "frosin/easyretailcrm",
     "description": "api lib for retailcrm api client",
     "type": "library",
-    "license": "free",
+    "license": "MIT",
     "minimum-stability": "alpha",
     "require": {
         "retailcrm/api-client-php": "~5.0",
