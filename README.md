@@ -7,6 +7,9 @@
 - Добавляем вызов класса в функции 'getClassByName' файла EasyRetailcrm/Library/EasyRequest/EasyRequest.php
 
 Пример использования:
+
+composer require frosin/easyretailcrm:dev-master
+
 ```
 
 if (file_exists('vendor')) {
