@@ -13,6 +13,14 @@ class Library
     public function __construct($apiClient)
     {
         $this->apiClient = $apiClient;
+        set_error_handler([$this, "noticeHandler"], E_NOTICE);
+    }
+
+    private function noticeHandler($errno, $errstr, $errfile, $errline)
+    {
+        if (stripos($errstr, 'Undefined variable') !== false) {
+            die("Внимание, переменная не определена!\nСтрока $errline файла $errfile\n");
+        }
     }
 
     public function easyGet(EasyRequest $request, $showStatus = false)
@@ -39,10 +47,10 @@ class Library
 
             $totalPage = $apiObject->pagination['totalPageCount'];
             $resultData = $apiObject->$resultName;
-            $resultList = $resultData;
+            $resultTemp = $resultData;
 
             if (!empty($request->responseFilter->getValue())) {
-                $resultList = [];
+                $resultTemp = [];
                 foreach ($resultData as $item) {
                     $itemTemp = [];
                     foreach ($request->responseFilter->getValue() as $key) {
@@ -52,9 +60,12 @@ class Library
                             $itemTemp[$key] = (is_array($item[$key])? []: "");
                         }
                     }
-                    $resultList[] = $itemTemp;
+                    $resultTemp[] = $itemTemp;
                 }
             }
+
+            $resultList = array_merge($resultList, $resultTemp);
+
             if ($showStatus) {
                 echo "page: $page/$totalPage\n";
             }
@@ -62,6 +73,7 @@ class Library
         } while ($page <= $totalPage);
 
         return $request->Model::getObjectsByArrayCollection($resultList);
+        //return $resultList;
     }
 
     private function checkResult($result)

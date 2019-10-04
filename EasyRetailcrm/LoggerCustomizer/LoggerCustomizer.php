@@ -13,7 +13,7 @@ class LoggerCustomizer
     {
         $fileName = basename($_SERVER['PHP_SELF'], ".php");
         $this->logger = new Logger($fileName."_journal");
-        $path = realpath(__DIR__ . "/../../");
+        $path = realpath(__DIR__ . "/../../../../../");
         $stream = new RotatingFileHandler("$path/$logDir/$fileName/log-$prefix.log", $logDays);
         $stream->setFilenameFormat('{filename}-{date}', 'Y-m-d');
         $this->logger->pushHandler($stream);

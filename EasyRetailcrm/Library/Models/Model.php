@@ -48,4 +48,14 @@ class Model
         }
         return $arObj;
     }
+
+    public function cleanBy(array $props)
+    {
+        foreach (get_object_vars($this) as $var => $value) {
+            if (!in_array($var, $props)) {
+                unset($this->$var);
+            }
+        }
+        return $this;
+    }
 }

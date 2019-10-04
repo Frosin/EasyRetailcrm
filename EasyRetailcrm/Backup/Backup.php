@@ -9,7 +9,7 @@ class Backup
 
     public function __construct()
     {
-        $this->dir = realpath(__DIR__ . "/../..") . "/backup/";
+        $this->dir = realpath(__DIR__ . "/../../../../..") . "/backup/";
         if (!file_exists($this->dir)) {
             mkdir($this->dir);
         }
