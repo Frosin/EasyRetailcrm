@@ -4,7 +4,6 @@ namespace EasyRetailcrm\Library\EasyRequest;
 use EasyRetailcrm\Exception\InvalidApiMethodException;
 use EasyRetailcrm\Exception\BadModelNameException;
 use EasyRetailcrm\Library\EasyRequest\Filter\RequestFilter;
-use EasyRetailcrm\Library\EasyRequest\Filter\ResponseFilter;
 use EasyRetailcrm\Library\Models\Order;
 use EasyRetailcrm\Library\Models\Customer;
 use EasyRetailcrm\Library\Models\OrdersHistory;
@@ -13,7 +12,6 @@ use easyRetailcrm\Library\Models\CustomersHistory;
 class EasyRequest
 {
     public $requestFilter;
-    public $responseFilter;
     public $method;
     public $resultName;
     public $Model;
@@ -25,7 +23,6 @@ class EasyRequest
 
         $this->setPropertiesByMethod($method);
         $this->requestFilter = new RequestFilter;
-        $this->responseFilter = new ResponseFilter;
     }
 
     private function setPropertiesByMethod($method)

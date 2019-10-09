@@ -3,6 +3,12 @@ namespace EasyRetailcrm\Library\EasyRequest\Filter;
 
 class RequestFilter extends Filter
 {
+    public function setAll(array $fData)
+    {
+        $this->filterData = $fData;
+        return $this;
+    }
+
     public function set(string $filterName, $filterValue): self
     {
         $this->filterData[$filterName] = $filterValue;

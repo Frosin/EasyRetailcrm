@@ -47,24 +47,8 @@ class Library
 
             $totalPage = $apiObject->pagination['totalPageCount'];
             $resultData = $apiObject->$resultName;
-            $resultTemp = $resultData;
 
-            if (!empty($request->responseFilter->getValue())) {
-                $resultTemp = [];
-                foreach ($resultData as $item) {
-                    $itemTemp = [];
-                    foreach ($request->responseFilter->getValue() as $key) {
-                        if (array_key_exists($key, $item)) {
-                            $itemTemp[$key] = $item[$key];
-                        } else {
-                            $itemTemp[$key] = (is_array($item[$key])? []: "");
-                        }
-                    }
-                    $resultTemp[] = $itemTemp;
-                }
-            }
-
-            $resultList = array_merge($resultList, $resultTemp);
+            $resultList = array_merge($resultList, $resultData);
 
             if ($showStatus) {
                 echo "page: $page/$totalPage\n";
@@ -73,7 +57,28 @@ class Library
         } while ($page <= $totalPage);
 
         return $request->Model::getObjectsByArrayCollection($resultList);
-        //return $resultList;
+    }
+
+    public function getStatusesByGroups($groups)
+    {
+        $statuses = $this->apiClient->request->statusGroupsList();
+        $this->checkResult($statuses);
+        $statuses = $statuses->statusGroups;
+        $resultStatuses = array();
+        foreach ($groups as $group) {
+            if (isset($statuses[$group])) {
+                $resultStatuses = array_merge($resultStatuses, $statuses[$group]['statuses']);
+            }
+        }
+
+        return $resultStatuses;
+    }
+
+    public function getSites()
+    {
+        $result = $this->apiClient->request->sitesList();
+        $this->checkResult($result);
+        return $result->sites;
     }
 
     private function checkResult($result)
