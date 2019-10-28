@@ -16,7 +16,7 @@ class Library
         set_error_handler([$this, "noticeHandler"], E_NOTICE);
     }
 
-    private function noticeHandler($errno, $errstr, $errfile, $errline)
+    public function noticeHandler($errno, $errstr, $errfile, $errline)
     {
         if (stripos($errstr, 'Undefined variable') !== false) {
             die("Внимание, переменная не определена!\nСтрока $errline файла $errfile\n");
